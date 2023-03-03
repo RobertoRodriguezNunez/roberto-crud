@@ -34,10 +34,10 @@ export class AddEditComponent implements OnInit {
             password: ['', [Validators.minLength(6), ...(!this.id ? [Validators.required] : [])]]
         });
 
-        this.title = 'Add User';
+        this.title = 'Añadir usuario';
         if (this.id) {
             // edit mode
-            this.title = 'Edit User';
+            this.title = 'Editar usuario';
             this.loading = true;
             this.accountService.getById(this.id)
                 .pipe(first())
@@ -67,7 +67,7 @@ export class AddEditComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.alertService.success('User saved', { keepAfterRouteChange: true });
+                    this.alertService.success('Usuario guardado', { keepAfterRouteChange: true });
                     this.router.navigateByUrl('/users');
                 },
                 error: error => {
